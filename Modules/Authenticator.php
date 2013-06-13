@@ -10,17 +10,25 @@ class Authenticator extends Database {
 	{	
 		parent::__construct();
 		$this->username = $this->connection->real_escape_string($username);
-		$this->password = $this->connection->real_escape_string($password);
+		$this->password = $this->connection->real_escape_string(md5($password));
 	}
 
 	public function login()
 	{
-		$currentUser = $this->check_credentials();
-		if($currentUser)
+		if(empty($this->username) || empty($this->password))
 		{
-			return $currentUser;
+			echo "Username and password is empty - from PHP\n";
+			die();
 		}
-		return false;
+		else 
+		{
+			$currentUser = $this->check_credentials();
+			if($currentUser)
+			{
+				return $currentUser;
+			}
+			return false;	
+		}
 	}
 
 	private function check_credentials()
@@ -28,7 +36,7 @@ class Authenticator extends Database {
 		$query = "SELECT `username` 
 				FROM `fb_users` 
 				WHERE `username` = '$this->username'
-				AND `password` = MD5 ('$this->password')
+				AND `password` = '$this->password'
 				LIMIT 1";
 		$result = $this->connection->query($query);
 		

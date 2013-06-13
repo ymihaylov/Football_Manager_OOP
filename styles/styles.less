@@ -25,6 +25,9 @@ table {
 a {
 	text-decoration: none;
 	color: inherit;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 //Fix for yellow background on inputs when they are required
@@ -61,7 +64,7 @@ body {
 		border-bottom: 1px solid #5db6de;
 	}
 
-	#login-form-container {
+	.form-container {
 		width: 300px;
 		margin: 20px auto;
 		padding: 15px;
@@ -85,9 +88,26 @@ body {
 				background-color: #dae1e5;
 				border-radius: 4px;
 				border: 2px solid #929496;
+				cursor: pointer;
 			}
 		}
-		#login-failed-text {
+
+		.btns-container {
+			position: relative;
+			margin-bottom: 10px;
+			min-height:34px;
+			input, a {
+				position: absolute;
+			}
+
+			a {
+				top: 10px;
+				left: 160px;
+				color: #dbe3e9;
+			}
+		}
+
+		.info-text {
 				display: inline;
 				font-size: 1em;
 				color: #5aac2f;

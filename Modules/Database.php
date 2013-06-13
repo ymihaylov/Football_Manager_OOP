@@ -5,7 +5,7 @@ class Database {
 	protected $username_db = 'yavcho_despark';
 	protected $password_db = 'quadro0';
 
-	protected $connection;
+	public $connection;
 
 	protected static $instance = null;
 
