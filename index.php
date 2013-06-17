@@ -8,9 +8,6 @@
 	}
 	require_once("html-snippets/header-html.php");
 ?>
-<body>
-	<div id="page-container">
-		<h1>Football Manager</h1>
 		<div id="login-form-container" class="form-container">
 			<form id="login-form" action="/processes/login.php" method="POST">
 				<input id="username-login" type="text" name="username" placeholder="username" required />

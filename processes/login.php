@@ -2,12 +2,6 @@
 require_once ('../Modules/Authenticator.php');
 
 $user_credentials = new Authenticator($_POST['username'], $_POST['password']);
-
-if($user_credentials->login())
-{
-	echo "LoggedIn";
-}
-else
-{
-	echo "Login failed";
-}
+$user_credentials->login();
+header('Content-type: application/json');
+echo json_encode($user_credentials->login());

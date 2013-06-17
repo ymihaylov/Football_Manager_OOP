@@ -17,17 +17,19 @@ class Authenticator extends Database {
 	{
 		if(empty($this->username) || empty($this->password))
 		{
-			echo "Username and password is empty - from PHP\n";
-			die();
+			return array("logged" => false, "username" => $this->username, 
+				"message" => "You dont fill all fields - by PHP");
 		}
 		else 
 		{
 			$currentUser = $this->check_credentials();
 			if($currentUser)
 			{
-				return $currentUser;
+				return array("logged" => true, "username" => $this->username, 
+				"message" => "You are logged in!");
 			}
-			return false;	
+			return array("registred" => false, "username" => $this->username, 
+				"message" => "There is some problem with logging");	
 		}
 	}
 

@@ -1,4 +1,5 @@
 $("input#login-btn").on("click", function (e) {
+	e.preventDefault();
 	if($("#username-login").val() === "") {
 		$("#login-info-text").text("Username field is empty ...");
 	} else if ($("#password-login").val() === "") {
@@ -9,12 +10,9 @@ $("input#login-btn").on("click", function (e) {
 			type: $("#login-form").attr("method"),
 			timeout: 30000,
 			data: $("#login-form :input").serializeArray(),
-			success: function (data) {
-				if(data === "LoggedIn") {
-					window.location.replace("teams.php");
-				} else {
-					$("#login-info-text").text(data);
-				}
+			complete: function (data) {
+				clear_form_fields('login-form');
+				$("#login-info-text").text(data.responseJSON.message);
 			}
 		});
 	}

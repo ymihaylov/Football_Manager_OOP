@@ -5,3 +5,6 @@
     <title>Football Manager</title>
     <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
 </head>
+<body>
+	<div id="page-container">
+		<h1>Football Manager</h1>
