@@ -3,8 +3,8 @@
 	Session::start();
 	if(Session::get('logged'))
 	{
-		//header('Location: teams.php');
-		//die();
+		header('Location: teams.php');
+		die();
 	}
 	require_once("html-snippets/header-html.php");
 ?>
@@ -22,6 +22,6 @@
 	</div>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="js/my_script.js"></script>
-</body>
-</html>
+<?php  
+require_once 'html-snippets/footer.php';
 

@@ -28,7 +28,7 @@ class Authenticator extends Database {
 				return array("logged" => true, "username" => $this->username, 
 				"message" => "You are logged in!");
 			}
-			return array("registred" => false, "username" => $this->username, 
+			return array("logged" => false, "username" => $this->username, 
 				"message" => "There is some problem with logging");	
 		}
 	}

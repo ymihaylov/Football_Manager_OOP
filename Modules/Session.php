@@ -24,4 +24,18 @@ class Session {
 		}
 		return false;
 	}
+	
+	/**
+	 * Checks whether the user is logged i
+	 * If it isnt - current script dies
+	 * If it is return true;
+	 */
+	public static function check_for_logged_user()
+	{
+		if ( ! self::get('logged') )
+		{
+			header('Location: index.php');
+			die();
+		}
+	}
 }

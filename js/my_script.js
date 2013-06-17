@@ -13,6 +13,9 @@ $("input#login-btn").on("click", function (e) {
 			complete: function (data) {
 				clear_form_fields('login-form');
 				$("#login-info-text").text(data.responseJSON.message);
+				if(data.responseJSON.logged) {
+					window.location = "teams.php";
+				}
 			}
 		});
 	}
@@ -37,6 +40,9 @@ $("input#registrer-btn").on("click", function (e) {
 			complete: function (data) {
 				clear_form_fields('registration-form');
 				$("#reg-info-text").text(data.responseJSON.message);
+				if(data.responseJSON.registred) {
+					window.location = "teams.php";
+				}
 			}
 		});
 	}

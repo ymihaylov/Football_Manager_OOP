@@ -1,9 +1,6 @@
 <?php 
 require_once("html-snippets/header-html.php");
 ?>
-<body>
-	<div id="page-container">
-		<h1>Football Manager</h1>
 		<div id="registration-form-container" class="form-container">
 			<form id="registration-form" action="/processes/process.php" method="post">
 				<input id="username-reg" type="text" name="username" placeholder="username" required />
@@ -20,5 +17,5 @@ require_once("html-snippets/header-html.php");
 	
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="js/my_script.js"></script>
-</body>
-</html>
+<?php  
+require_once 'html-snippets/footer.php';
