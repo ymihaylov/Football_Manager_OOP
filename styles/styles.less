@@ -50,6 +50,7 @@ input:-webkit-autofill {
 body {
 	background-color: #396b90;
 	font-family: Helvetica;
+	color: white;
 }
 
 #page-container {
@@ -126,7 +127,7 @@ body {
 	
 	.title-text {
 		font-size: 2em;
-		font-weight: bold;
+		font-weight: bold; 
 		text-transform: uppercase;
 	}
 
@@ -158,9 +159,28 @@ body {
     		padding: 5px;
         	border: 1px solid #756A57;
         	text-align: center;
-    	}
-		
+    	}	
 	}
+
+	ul#main-menu {
+		list-style-type: none;
+		margin-top: 10px;
+		li {
+			display: inline-block;
+			margin-right: 10px;
+			padding-right: 14px;
+			border-right: 1px solid #ccc;
+			a.current {
+				text-decoration: underline;
+			}
+		}
+	}
+	
+	#buttons-container {
+		margin-top: 10px;
+		display: none;
+	}
+
 	#new-team-player-form {
 		margin-top: 20px;
 		margin-bottom: 20px;
@@ -168,6 +188,10 @@ body {
 
 	.go-back {
 		color: #dbe3e9;
+	}
+
+	.edit-bg-color {
+		background-color: #5aac2f;
 	}
 }
 

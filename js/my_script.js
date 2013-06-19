@@ -9,6 +9,7 @@ $("input#login-btn").on("click", function (e) {
 			url: $("#login-form").attr("action"),
 			type: $("#login-form").attr("method"),
 			timeout: 30000,
+			dataType: "json",
 			data: $("#login-form :input").serializeArray(),
 			complete: function (data) {
 				clear_form_fields('login-form');
@@ -65,6 +66,54 @@ function clear_form_fields(form)
 }
 
 
-		$("#registration-form").submit(function() {
-		return false;
+$(".edit-btn").on("click", function(e){
+	e.preventDefault();
+	var entire_row = $(this).parent().parent();
+	var current_team_info = {
+			team_name: $(entire_row).children(".team-name-cell").text(),
+			team_coach: $(entire_row).children(".team-coach-cell").text(),
+			team_sponsor: $(entire_row).children(".team-sponsor-cell").text()
+	};
+	if(! $(this).data("edit"))
+	{
+		$(entire_row).attr("data-edit", "true");
+		$(this).parent().addClass("edit-bg-color");
+		$(entire_row).children(".team-name-cell").html(
+			'<input type="text" value="'+current_team_info.team_name+'" />');
+		$(entire_row).children(".team-coach-cell").html(
+			'<input type="text" value="'+current_team_info.team_coach+'" />');
+		$(entire_row).children(".team-sponsor-cell").html(
+			'<input type="text" value="'+current_team_info.team_sponsor+'" />');
+		$("#buttons-container").css("display", "block");
+	}
+});
+
+$("#save-changes-btn").on("click", function(e) {
+	var edited_teams_array = [];
+	$("#information-table tbody tr").each(function(e) {
+		if($(this).data("edit")) {
+			var edited_team_obj = {
+				id: $(this).data("id"),
+				team_name: $(this).children(".team-name-cell").children().val(),
+				team_coach: $(this).children(".team-coach-cell").children().val(),
+				team_sponsor: $(this).children(".team-sponsor-cell").children().val()
+			};
+			edited_teams_array.push(edited_team_obj);
+		}
+		var json_string = JSON.stringify(edited_teams_array);
+		$.ajax({
+			url: "processes/update-teams.php",
+			type: "POST",
+			timeout: 30000,
+			dataType: "json",
+			data: {data: json_string},
+			complete: function (data) {
+				$("#update-info-text").text(JSON.stringify(data));
+			}
+		});
 	});
+});
+
+$("#discard-changes-btn").on("click", function(e) {
+	window.location="teams.php";
+});
