@@ -43,9 +43,9 @@
 			
 	?>
 		<tr data-id="<?= $team['id']?>" data-edit="false">
-			<td class="team-name-cell"><?= $team['team_name']; ?></td>
-			<td class="team-coach-cell"><?= $team['team_coach']; ?></td>
-			<td class="team-sponsor-cell"><?= $team['team_sponsor']; ?></td>
+			<td class="team-name-cell editable"><?= $team['team_name']; ?></td>
+			<td class="team-coach-cell editable"><?= $team['team_coach']; ?></td>
+			<td class="team-sponsor-cell editable"><?= $team['team_sponsor']; ?></td>
 			<td class="edit-team-cell"><a class="edit-btn" href="#">Edit</a></td>
 			<td class="view-players-cell"><a href="#">View players</a></td>
 			<td class="delete-cell"><a href="#"><a href="">Delete</a></td>

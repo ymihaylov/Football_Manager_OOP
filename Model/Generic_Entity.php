@@ -40,7 +40,6 @@ class Generic_Entity extends Database {
 		if( ! $this->connection->query($update_query))
 		{	
 			throw new Exception("DB Error", 1);
-			
 		}
 	}
 }

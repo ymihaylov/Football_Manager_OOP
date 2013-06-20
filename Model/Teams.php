@@ -20,8 +20,9 @@ class Teams extends Generic_Entity {
 		{
 			parent::updateById(self::TABLE_NAME, $team->id, $team_array);
 		}
-		catch (Exception $e) {
-			return array("updated" => false, "message" => $e.getMessage());
-		} 
+		catch (Exception $e) 
+		{
+			throw $e;
+		}
 	}
 }

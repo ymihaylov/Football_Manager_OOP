@@ -74,17 +74,30 @@ $(".edit-btn").on("click", function(e){
 			team_coach: $(entire_row).children(".team-coach-cell").text(),
 			team_sponsor: $(entire_row).children(".team-sponsor-cell").text()
 	};
-	if(! $(this).data("edit"))
+	if($(entire_row).data("edit") === false)
 	{
-		$(entire_row).attr("data-edit", "true");
+		$(entire_row).data("edit", true);
+		$(entire_row).addClass("edit-row");
 		$(this).parent().addClass("edit-bg-color");
-		$(entire_row).children(".team-name-cell").html(
-			'<input type="text" value="'+current_team_info.team_name+'" />');
-		$(entire_row).children(".team-coach-cell").html(
+		$(entire_row).children(".team-name-cell").append(
+			'<input class="edit-input" type="text" value="'+current_team_info.team_name+'" />');
+		$(entire_row).children(".team-coach-cell").append(
 			'<input type="text" value="'+current_team_info.team_coach+'" />');
-		$(entire_row).children(".team-sponsor-cell").html(
+		$(entire_row).children(".team-sponsor-cell").append(
 			'<input type="text" value="'+current_team_info.team_sponsor+'" />');
 		$("#buttons-container").css("display", "block");
+	}
+	else
+	{
+		$(entire_row).children("td.editable").children("input").remove();
+		$(entire_row).data("edit", false);
+		$(entire_row).removeClass("edit-row");
+		$(this).parent().removeClass("edit-bg-color");
+		console.log($("tr.edit-row").length);
+		if($("tr.edit-row").length === 0)
+		{
+			$("#buttons-container").css("display", "none");
+		}
 	}
 });
 
@@ -108,7 +121,7 @@ $("#save-changes-btn").on("click", function(e) {
 			dataType: "json",
 			data: {data: json_string},
 			complete: function (data) {
-				$("#update-info-text").text(JSON.stringify(data));
+				$("#update-info-text").text(data.responseJSON.message);
 			}
 		});
 	});

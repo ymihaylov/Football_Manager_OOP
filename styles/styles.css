@@ -16,6 +16,7 @@ body{background-color:#396b90;font-family:Helvetica;color:white;}
 #page-container #information-table tr{cursor:default;}#page-container #information-table tr td.edit-team-cell:hover{background-color:#5aac2f;cursor:pointer;}
 #page-container #information-table tr td.delete-cell:hover{background-color:red;}
 #page-container #information-table tr td.view-players-cell:hover{background-color:#424242;cursor:pointer;}
+#page-container #information-table tr td.editable{position:relative;}#page-container #information-table tr td.editable input[type="text"]{position:absolute;top:0;left:10px;}
 #page-container #information-table td{padding:5px;border:1px solid #756A57;text-align:center;}
 #page-container ul#main-menu{list-style-type:none;margin-top:10px;}#page-container ul#main-menu li{display:inline-block;margin-right:10px;padding-right:14px;border-right:1px solid #ccc;}#page-container ul#main-menu li a.current{text-decoration:underline;}
 #page-container #buttons-container{margin-top:10px;display:none;}
