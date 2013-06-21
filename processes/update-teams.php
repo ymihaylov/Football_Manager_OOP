@@ -4,7 +4,6 @@ require_once '../Model/Teams.php';
 header('Content-type: application/json');
 $array = json_decode(stripslashes($_POST['data']));
 $team_obj = new Teams;
-
 $success_update = TRUE;
 $array_response = array();
 foreach($array as $team)

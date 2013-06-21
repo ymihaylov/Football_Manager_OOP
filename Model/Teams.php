@@ -25,4 +25,16 @@ class Teams extends Generic_Entity {
 			throw $e;
 		}
 	}
+
+	public function delete_team_by_id($id)
+	{
+		try
+		{
+			parent::deleteById(self::TABLE_NAME, $id);
+		}
+		catch (Exception $e)
+		{
+			throw $e;	
+		}
+	}
 }

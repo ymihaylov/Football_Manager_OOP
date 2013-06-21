@@ -93,7 +93,6 @@ $(".edit-btn").on("click", function(e){
 		$(entire_row).data("edit", false);
 		$(entire_row).removeClass("edit-row");
 		$(this).parent().removeClass("edit-bg-color");
-		console.log($("tr.edit-row").length);
 		if($("tr.edit-row").length === 0)
 		{
 			$("#buttons-container").css("display", "none");
@@ -113,7 +112,8 @@ $("#save-changes-btn").on("click", function(e) {
 			};
 			edited_teams_array.push(edited_team_obj);
 		}
-		var json_string = JSON.stringify(edited_teams_array);
+	});
+	var json_string = JSON.stringify(edited_teams_array);
 		$.ajax({
 			url: "processes/update-teams.php",
 			type: "POST",
@@ -121,12 +121,49 @@ $("#save-changes-btn").on("click", function(e) {
 			dataType: "json",
 			data: {data: json_string},
 			complete: function (data) {
-				$("#update-info-text").text(data.responseJSON.message);
+				$("#update-info-text").text(data.responseJSON.message)
+										.css("display", "block");
+				set_all_rows_for_read(edited_teams_array);
 			}
 		});
-	});
 });
 
 $("#discard-changes-btn").on("click", function(e) {
-	window.location="teams.php";
+	set_all_rows_for_read();
+});
+
+function set_all_rows_for_read(edited_teams) {
+	$("tr.edit-row").each(function(index) {
+		var this_id = $(this).data("id");
+		for (var i = 0; i < edited_teams.length; i++) {
+			if(edited_teams[i].id === this_id) {
+				$(this).children(".team-name-cell").text(edited_teams[i].team_name);
+				$(this).children(".team-sponsor-cell").text(edited_teams[i].team_sponsor);
+				$(this).children(".team-coach-cell").text(edited_teams[i].team_coach);
+			}
+		}
+		$(this).children("td.editable").children("input").remove();
+		$(this).data("edit", false);
+		$(this).removeClass("edit-row");
+		$(this).children(".edit-team-cell").removeClass("edit-bg-color");
+	});
+
+	$("#buttons-container").hide();
+}
+
+$(".delete-cell").on("click", function(e) {
+	e.preventDefault();
+	$( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height:200,
+      modal: true,
+      buttons: {
+        "Delete all items": function() {
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
 });

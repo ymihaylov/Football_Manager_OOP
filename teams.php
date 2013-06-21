@@ -60,7 +60,11 @@
 	<input id="discard-changes-btn" type="button" value="Discard changes" />
 </div>	
 <div id="update-info-text">Heloo</div>		
+<div id="dialog-confirm" title="Empty the recycle bin?">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="js/my_script.js"></script>
 <?php  
 require_once 'html-snippets/footer.php';

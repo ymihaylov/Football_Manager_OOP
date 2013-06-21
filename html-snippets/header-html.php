@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>Football Manager</title>
     <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    
 </head>
 <body>
 	<div id="page-container">

@@ -20,6 +20,7 @@ body{background-color:#396b90;font-family:Helvetica;color:white;}
 #page-container #information-table td{padding:5px;border:1px solid #756A57;text-align:center;}
 #page-container ul#main-menu{list-style-type:none;margin-top:10px;}#page-container ul#main-menu li{display:inline-block;margin-right:10px;padding-right:14px;border-right:1px solid #ccc;}#page-container ul#main-menu li a.current{text-decoration:underline;}
 #page-container #buttons-container{margin-top:10px;display:none;}
+#page-container #update-info-text{display:none;}
 #page-container #new-team-player-form{margin-top:20px;margin-bottom:20px;}
 #page-container .go-back{color:#dbe3e9;}
 #page-container .edit-bg-color{background-color:#5aac2f;}

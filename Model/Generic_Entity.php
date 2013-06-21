@@ -42,4 +42,14 @@ class Generic_Entity extends Database {
 			throw new Exception("DB Error", 1);
 		}
 	}
+
+	protected function deleteById ($table, $entity_id)
+	{
+		$delete_query = "DELETE FROM `$table`
+							  WHERE id = $entity_id";
+		if ( ! $this->connection->query($delete_query))
+		{
+			throw new Exception("DB Error. Cannot delete this", 1);
+		}
+	}
 }
