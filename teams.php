@@ -2,7 +2,7 @@
 	require_once 'Modules/Session.php';
 	Session::start();
 	Session::check_for_logged_user();
-
+	
 	require_once("Model/Teams.php");
 	require_once("html-snippets/header-html.php");
 	require_once("html-snippets/greetings.php");
@@ -39,8 +39,7 @@
 	if( ! empty($all_teams_array) )
 	{
 		foreach ($all_teams_array as $counter => $team) 
-		{
-			
+		{		
 	?>
 		<tr data-id="<?= $team['id']?>" data-edit="false">
 			<td class="team-name-cell editable"><?= $team['team_name']; ?></td>
@@ -54,17 +53,21 @@
 		} 
 	}
 	?>
+	<tr>
+		<td class="team-name-cell editable"><input id="new-team-name" type="text" placeholder="Enter team name..." /></td>
+		<td class="team-coach-cell editable"><input id="new-team-coach" type="text" placeholder="Enter team coach..." /></td>
+		<td class="team-sponsor-cell editable"><input id="new-team-sponsor" type="text" placeholder="Enter team sponsor..." /></td>
+		<td colspan="3"><a href="#"><input id="add-new-team-btn" type="button" value="Add new team" /></td>
+	</tr>
 </table>
 <div id="buttons-container">
 	<input id="save-changes-btn" type="button" value="Save changes" />
 	<input id="discard-changes-btn" type="button" value="Discard changes" />
 </div>	
-<div id="update-info-text">Heloo</div>		
-<div id="dialog-confirm" title="Empty the recycle bin?">
-  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+<div id="update-info-text"></div>		
+
+<div id="dialog-confirm" title="Delete this team?">
+  <p>These team will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="js/my_script.js"></script>
 <?php  
 require_once 'html-snippets/footer.php';

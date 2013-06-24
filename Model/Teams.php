@@ -37,4 +37,9 @@ class Teams extends Generic_Entity {
 			throw $e;	
 		}
 	}
+
+	public function create() 
+	{
+		
+	}
 }

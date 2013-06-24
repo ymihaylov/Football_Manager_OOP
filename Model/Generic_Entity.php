@@ -52,4 +52,5 @@ class Generic_Entity extends Database {
 			throw new Exception("DB Error. Cannot delete this", 1);
 		}
 	}
+
 }

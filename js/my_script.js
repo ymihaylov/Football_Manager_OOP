@@ -20,7 +20,6 @@ $("input#login-btn").on("click", function (e) {
 			}
 		});
 	}
-
 	$("#login-form").submit(function() {
 		return false;
 	});
@@ -129,7 +128,7 @@ $("#save-changes-btn").on("click", function(e) {
 });
 
 $("#discard-changes-btn").on("click", function(e) {
-	set_all_rows_for_read();
+	set_all_rows_for_read([]);
 });
 
 function set_all_rows_for_read(edited_teams) {
@@ -142,6 +141,7 @@ function set_all_rows_for_read(edited_teams) {
 				$(this).children(".team-coach-cell").text(edited_teams[i].team_coach);
 			}
 		}
+
 		$(this).children("td.editable").children("input").remove();
 		$(this).data("edit", false);
 		$(this).removeClass("edit-row");
@@ -153,17 +153,49 @@ function set_all_rows_for_read(edited_teams) {
 
 $(".delete-cell").on("click", function(e) {
 	e.preventDefault();
+	var current_id = $(this).parent().data("id");
 	$( "#dialog-confirm" ).dialog({
       resizable: false,
-      height:200,
       modal: true,
+      width: 400,
+      height: 220,
       buttons: {
-        "Delete all items": function() {
-          $( this ).dialog( "close" );
+        "Delete team": function () {
+			delete_team(current_id);
+			$(this).dialog("close");
         },
         Cancel: function() {
-          $( this ).dialog( "close" );
+          $(this).dialog( "close" );
         }
       }
     });
+});
+
+function delete_team(id) {
+	var team_info = {"team_id": id };
+	var team_info_encoded = JSON.stringify(team_info);
+	$.ajax({
+		url: "/processes/delete-team.php",
+		type: "POST",
+		timeout: 30000,
+		dataType: "json",
+		data: {data: team_info_encoded},
+		complete: function (data) {
+			$("#update-info-text").text(data.responseJSON.message)
+										.css("display", "block");
+			if(data.responseJSON.deleted) {
+				$('tr[data-id='+id+']').remove();
+			}
+		}
+	});
+}
+
+$("#add-new-team-btn").on("click", function (e) {
+	e.preventDefault();
+	var new_team_obj = {
+		team_name: $("#new-team-name").val(),
+		team_coach: $("#new-team-coach").val(),
+		team_sponsor: $("#new-team-sponsor").val()
+	};
+	console.log(new_team_obj);
 });
