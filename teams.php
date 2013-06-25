@@ -12,7 +12,7 @@
 	<li><a href="#">Players</a></li>
 	<li><a href="#">Matches</a></li>
 </ul>
-<div class="title-text">Teams</div>
+<h2 class="title-text">Teams</h2>
 <table id="information-table">
 	<colgroup>
 		<col style="width: 200px" />

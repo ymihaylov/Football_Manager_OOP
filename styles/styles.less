@@ -8,11 +8,14 @@ table, img, ol, ul, li, form, {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 62.5%;
-	font: inherit;
 	vertical-align: baseline;
 }
-
+body {
+	font-size: 62.5%;
+	background-color: #396b90;
+	font-family: Helvetica;
+	color: white;
+}
 header, section, footer, article, aside {
 	display: block;
 }
@@ -47,24 +50,20 @@ input:-webkit-autofill {
 	}	
 }
 
-body {
-	background-color: #396b90;
-	font-family: Helvetica;
-	color: white;
-}
-
 #page-container {
 	width: 960px;
-	height: 600px;
+	min-height: 600px;
 	margin: 10px auto;
 	h1 {
 		padding-bottom: 10px;
+		margin-bottom: 20px;
 		font-size: 3em;
 		color: #dbe3e9;
 		text-align: center;
 		border-bottom: 1px solid #5db6de;
 	}
-
+	
+	// Login and Registration form styles
 	.form-container {
 		width: 300px;
 		margin: 20px auto;
@@ -105,29 +104,49 @@ body {
 				top: 10px;
 				left: 160px;
 				color: #dbe3e9;
+				font-size: 1.5em;
 			}
 		}
 
 		.info-text {
 				display: inline;
-				font-size: 1em;
+				font-size: 1.2em;
 				color: #5aac2f;
 		}
 	}
 
-	.welcome-text, .title-text {
+	.welcome-text {
 		margin-top: 10px;
-		font-size: 1.6em;
+		font-size: 2em;
 		color: #dbe3e9;
 
 		.logout-link {
 			font-size: 0.8em;
 		}
 	}
-	
+
+	ul#main-menu {
+		list-style-type: none;
+		margin-top: 10px;
+		li {
+			display: inline-block;
+			margin-right: 10px;
+			padding-right: 14px;
+			border-right: 1px solid #ccc;
+
+			a {
+				font-size: 1.8em;
+			}
+			a.current {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	// Title of current page
 	.title-text {
-		font-size: 2em;
-		font-weight: bold; 
+		margin-top: 10px;
+		font-size: 2.2em;
 		text-transform: uppercase;
 	}
 
@@ -141,6 +160,14 @@ body {
 		
 		tr {
 			cursor: default;
+			font-size: 1.6em;
+			
+			td {
+	    		padding: 5px;
+	        	border: 1px solid #756A57;
+	        	text-align: center;
+	    	}	
+
 			td.edit-team-cell:hover {
 				background-color: #5aac2f;
         		cursor: pointer;	
@@ -154,40 +181,21 @@ body {
         		cursor: pointer;	
 			}
 
-			td.editable {
+			td.editable {	
 				position: relative;
 				input[type="text"] {
 					position: absolute;
-					top: 0;
+					top: 4px;
 					left: 10px;
 				}
 			}
 		}
-
-		td {
-    		padding: 5px;
-        	border: 1px solid #756A57;
-        	text-align: center;
-    	}	
 	}
-
-	ul#main-menu {
-		list-style-type: none;
-		margin-top: 10px;
-		li {
-			display: inline-block;
-			margin-right: 10px;
-			padding-right: 14px;
-			border-right: 1px solid #ccc;
-			a.current {
-				text-decoration: underline;
-			}
-		}
-	}
-
+	
 	#dialog-confirm {
+		font-size: 30px !important;
 		display: none;
-		height: 100px !important;
+
 		span {
 			float: left; 
 			margin: 0 7px 20px 0;
