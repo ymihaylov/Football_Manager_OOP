@@ -38,8 +38,17 @@ class Teams extends Generic_Entity {
 		}
 	}
 
-	public function create() 
+	public function create_team($new_team_array) 
 	{
-		
+		try 
+		{
+			$id = parent::create(self::TABLE_NAME, $new_team_array);
+			return array("created" => true, "id" => $id, "message" => $new_team_array['team_name'] . ' created successfull');
+		}
+		catch (Exception $e)
+		{
+			return array("created" => false, "id" => null, "message" => $e->getMessage());
+		}
+
 	}
 }

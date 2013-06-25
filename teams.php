@@ -32,6 +32,7 @@
 			<td></td>
 		</tr>
 	</thead>
+	<tbody>
 	<?php 
 	$teams = new Teams();
 	$all_teams_array = $teams->get_all_teams();
@@ -53,21 +54,24 @@
 		} 
 	}
 	?>
-	<tr>
-		<td class="team-name-cell editable"><input id="new-team-name" type="text" placeholder="Enter team name..." /></td>
-		<td class="team-coach-cell editable"><input id="new-team-coach" type="text" placeholder="Enter team coach..." /></td>
-		<td class="team-sponsor-cell editable"><input id="new-team-sponsor" type="text" placeholder="Enter team sponsor..." /></td>
-		<td colspan="3"><a href="#"><input id="add-new-team-btn" type="button" value="Add new team" /></td>
-	</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td class="team-name-cell editable"><input id="new-team-name" type="text" placeholder="Enter team name..." /></td>
+			<td class="team-coach-cell editable"><input id="new-team-coach" type="text" placeholder="Enter team coach..." /></td>
+			<td class="team-sponsor-cell editable"><input id="new-team-sponsor" type="text" placeholder="Enter team sponsor..." /></td>
+			<td colspan="3"><a href="#"><input id="add-new-team-btn" type="button" value="Add new team" /></td>
+		</tr>
+	</tfoot>
 </table>
 <div id="buttons-container">
 	<input id="save-changes-btn" type="button" value="Save changes" />
 	<input id="discard-changes-btn" type="button" value="Discard changes" />
-</div>	
-<div id="update-info-text"></div>		
+</div>
+	<div id="update-info-text"></div>		
 
 <div id="dialog-confirm" title="Delete this team?">
-  <p>These team will be permanently deleted and cannot be recovered. Are you sure?</p>
+  <p>This team will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
 <?php  
 require_once 'html-snippets/footer.php';

@@ -64,8 +64,7 @@ function clear_form_fields(form)
 	});
 }
 
-
-$(".edit-btn").on("click", function(e){
+$("#information-table tbody").delegate(".edit-btn", "click", function(e){
 	e.preventDefault();
 	var entire_row = $(this).parent().parent();
 	var current_team_info = {
@@ -151,7 +150,7 @@ function set_all_rows_for_read(edited_teams) {
 	$("#buttons-container").hide();
 }
 
-$(".delete-cell").on("click", function(e) {
+$("#information-table tbody").delegate(".delete-cell", "click", function(e) {
 	e.preventDefault();
 	var current_id = $(this).parent().data("id");
 	$( "#dialog-confirm" ).dialog({
@@ -197,5 +196,38 @@ $("#add-new-team-btn").on("click", function (e) {
 		team_coach: $("#new-team-coach").val(),
 		team_sponsor: $("#new-team-sponsor").val()
 	};
-	console.log(new_team_obj);
+	for (var property in new_team_obj) {
+		if(new_team_obj[property] === "") {
+			$("#update-info-text").text("You have to fill all fields!").css("display", "block");
+			return false;
+		}
+	}
+	var new_team_obj_encoded = JSON.stringify(new_team_obj);
+	$.ajax({
+		url: "/processes/add-team.php",
+		type: "POST",
+		timeout: 30000,
+		dataType: "json",
+		data: {data: new_team_obj_encoded},
+		complete: function (data) {
+			if(data.responseJSON.created)
+			{
+				var new_team_row =
+				'<tr data-id="'+data.responseJSON.id+'" data-edit="false">' +
+					'<td class="team-name-cell editable">'+new_team_obj.team_name+'</td>' +
+					'<td class="team-coach-cell editable">'+new_team_obj.team_coach+'</td>' +
+					'<td class="team-sponsor-cell editable">'+new_team_obj.team_sponsor+'</td>' +
+					'<td class="edit-team-cell"><a class="edit-btn" href="#">Edit</a></td>' +
+					'<td class="view-players-cell"><a href="#">View players</a></td>' +
+					'<td class="delete-cell"><a href="#"><a href="">Delete</a></td>' +
+				'</tr>';
+				$("#information-table tbody").append(new_team_row);
+
+				$("#new-team-name").val("");
+				$("#new-team-coach").val("");
+				$("#new-team-sponsor").val("");
+			}
+			$("#update-info-text").text(data.responseJSON.message).css("display", "block");
+		}
+	});
 });

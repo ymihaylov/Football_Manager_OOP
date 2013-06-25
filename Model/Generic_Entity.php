@@ -53,4 +53,23 @@ class Generic_Entity extends Database {
 		}
 	}
 
+	protected function create($table, $field_array)
+	{
+		$create_query = "INSERT INTO $table SET ";
+		foreach ($field_array as $key => $value) {
+			$create_query .= "`$key` = '$value', ";
+		}
+		
+		$create_query = mb_substr($create_query, 0, -2);
+		if ( ! $this->connection->query($create_query)) 
+		{
+			throw new Exception("DB Error. Cannot create new team", 1);
+		}
+		else
+		{
+			return $this->connection->insert_id;
+		}
+		
+	}
+
 }

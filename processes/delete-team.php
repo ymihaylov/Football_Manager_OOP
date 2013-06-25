@@ -7,7 +7,7 @@ if (isset($_POST["data"])) {
         $team_id = $team_info_array["team_id"];
     }
 
-    $team = new Teams();
+    $team = new Teams;
     header('Content-type: application/json');
     try 
     {
