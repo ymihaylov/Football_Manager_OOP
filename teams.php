@@ -2,16 +2,13 @@
 	require_once 'Modules/Session.php';
 	Session::start();
 	Session::check_for_logged_user();
-	
+	$this_page="teams";
 	require_once("Model/Teams.php");
 	require_once("html-snippets/header-html.php");
 	require_once("html-snippets/greetings.php");
+	require_once("html-snippets/main-menu.php");
 ?>
-<ul id="main-menu">
-	<li><a href="#" class="current">Teams</a></li>
-	<li><a href="#">Players</a></li>
-	<li><a href="#">Matches</a></li>
-</ul>
+
 <h2 class="title-text">Teams</h2>
 <table id="teams-table">
 	<colgroup>
