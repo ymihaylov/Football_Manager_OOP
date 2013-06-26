@@ -65,7 +65,7 @@ function clear_form_fields(form)
 	});
 }
 
-$("#information-table tbody").delegate(".edit-btn", "click", function(e){
+$("#teams-table tbody").delegate(".edit-btn", "click", function(e){
 	e.preventDefault();
 	var entire_row = $(this).parent().parent();
 	var current_team_info = {
@@ -151,7 +151,7 @@ function set_all_rows_for_read(edited_teams) {
 	$("#buttons-container").hide();
 }
 
-$("#information-table tbody").delegate(".delete-cell", "click", function(e) {
+$("#teams-table tbody").delegate(".delete-cell", "click", function(e) {
 	e.preventDefault();
 	var current_id = $(this).parent().data("id");
 	$( "#dialog-confirm" ).dialog({
@@ -222,7 +222,7 @@ $("#add-new-team-btn").on("click", function (e) {
 					'<td class="view-players-cell"><a href="#">View players</a></td>' +
 					'<td class="delete-cell"><a href="#"><a href="">Delete</a></td>' +
 				'</tr>';
-				$("#information-table tbody").append(new_team_row);
+				$("#teams-table tbody").append(new_team_row);
 
 				$("#new-team-name").val("");
 				$("#new-team-coach").val("");

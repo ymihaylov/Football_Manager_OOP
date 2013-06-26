@@ -14,15 +14,14 @@ input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px #dbe2e8 inset;}
 #page-container ul#main-menu{list-style-type:none;margin-top:10px;}#page-container ul#main-menu li{display:inline-block;margin-right:10px;padding-right:14px;border-right:1px solid #ccc;}#page-container ul#main-menu li a{font-size:1.8em;}
 #page-container ul#main-menu li a.current{text-decoration:underline;}
 #page-container .title-text{margin-top:10px;font-size:2.2em;text-transform:uppercase;}
-#page-container #information-table{background-color:#457ca5;}#page-container #information-table thead tr{background-color:#1f3b4f;color:#dbe3e9;}
-#page-container #information-table tr{cursor:default;font-size:1.6em;}#page-container #information-table tr td{padding:5px;border:1px solid #756A57;text-align:center;}
-#page-container #information-table tr td.edit-team-cell:hover{background-color:#5aac2f;cursor:pointer;}
-#page-container #information-table tr td.delete-cell:hover{background-color:red;}
-#page-container #information-table tr td.view-players-cell:hover{background-color:#424242;cursor:pointer;}
-#page-container #information-table tr td.editable{position:relative;}#page-container #information-table tr td.editable input[type="text"]{position:absolute;top:4px;left:10px;}
-#page-container #dialog-confirm{font-size:30px !important;display:none;}#page-container #dialog-confirm span{float:left;margin:0 7px 20px 0;}
-#page-container #buttons-container{margin-top:10px;display:none;}
-#page-container #update-info-text{display:none;}
-#page-container #new-team-player-form{margin-top:20px;margin-bottom:20px;}
-#page-container .go-back{color:#dbe3e9;}
+#page-container #teams-table{background-color:#457ca5;}#page-container #teams-table thead tr{background-color:#1f3b4f;color:#dbe3e9;}
+#page-container #teams-table tr{cursor:default;font-size:1.6em;}#page-container #teams-table tr td{padding:5px;border:1px solid #756A57;text-align:center;}
+#page-container #teams-table tr td.edit-team-cell:hover{background-color:#5aac2f;cursor:pointer;}
+#page-container #teams-table tr td.delete-cell:hover{background-color:red;}
+#page-container #teams-table tr td.view-players-cell:hover{background-color:#424242;cursor:pointer;}
+#page-container #teams-table tr td.editable{position:relative;}#page-container #teams-table tr td.editable input[type="text"]{position:absolute;top:4px;left:10px;}
+#page-container #dialog-confirm{display:none;}#page-container #dialog-confirm h2{font-size:1.5em;}
+#page-container #dialog-confirm span{float:left;margin:0 7px 20px 0;}
+#page-container #buttons-container{margin-top:8px;display:none;}
+#page-container #update-info-text{margin-top:8px;display:none;font-size:1.6em;}
 #page-container .edit-bg-color{background-color:#5aac2f;}

@@ -13,7 +13,7 @@
 	<li><a href="#">Matches</a></li>
 </ul>
 <h2 class="title-text">Teams</h2>
-<table id="information-table">
+<table id="teams-table">
 	<colgroup>
 		<col style="width: 200px" />
 		<col style="width: 200px" />
@@ -70,7 +70,7 @@
 </div>
 	<div id="update-info-text"></div>		
 
-<div id="dialog-confirm" title="Delete this team?">
+<div id="dialog-confirm" style="font-size: 1.6em;" title="Delete this team?">
   <p>This team will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
 <?php  
