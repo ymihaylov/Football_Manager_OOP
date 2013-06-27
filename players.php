@@ -53,7 +53,7 @@
 	</li>			
 <?php			
 		}	
-	}	
+	}
 ?>
 </ul>
 <div id="dialog-confirm" style="font-size: 1.6em;" title="Delete this player?">

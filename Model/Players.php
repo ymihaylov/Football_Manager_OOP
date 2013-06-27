@@ -11,6 +11,18 @@ class Players extends Generic_Entity {
 		return $all_players;
 	}
 
+	public function delete_player_by_id($id)
+	{		
+		try
+		{
+			parent::deleteById(self::TABLE_NAME, $id);
+		}
+		catch (Exception $e)
+		{
+			throw $e;	
+		}
+	}
+
 	public function format_player_birthday($mysql_date)
 	{
 		return date("d F Y", strtotime($mysql_date));

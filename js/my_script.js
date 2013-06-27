@@ -243,12 +243,30 @@ $(".delete-player-btn").on("click", function(e) {
       height: 220,
       buttons: {
         "Delete player": function () {
-			delete_team(current_id);
+			delete_player(current_id);
 			$(this).dialog("close");
         },
         Cancel: function() {
-          $(this).dialog( "close" );
+          $(this).dialog("close");
         }
       }
     });
 });
+
+function delete_player(id) {
+	var player_info = {"player_id": id};
+	var player_info_json = JSON.stringify(player_info);
+	$.ajax({
+		url: "/processes/delete-player.php",
+		type: "POST",
+		timeout: 30000,
+		dataType: "json",
+		data: {data: player_info_json},
+		complete: function (data) {
+			console.log(JSON.stringify(data));
+			if(data.responseJSON.deleted) {
+				$('li[data-id='+id+']').remove();
+			}
+		}
+	});
+}

@@ -1,5 +1,6 @@
 <?php 
-if (isset($_POST["data"])) {
+if (isset($_POST["data"])) 
+{
 	require_once '../Model/Teams.php';
 	$team_info_json = $_POST["data"];
 	$team_info_array = json_decode($team_info_json, true);
