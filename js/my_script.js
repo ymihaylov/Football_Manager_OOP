@@ -154,7 +154,7 @@ function set_all_rows_for_read(edited_teams) {
 $("#teams-table tbody").delegate(".delete-cell", "click", function(e) {
 	e.preventDefault();
 	var current_id = $(this).parent().data("id");
-	$( "#dialog-confirm" ).dialog({
+	$("#dialog-confirm").dialog({
       resizable: false,
       modal: true,
       width: 400,
@@ -231,4 +231,24 @@ $("#add-new-team-btn").on("click", function (e) {
 			$("#update-info-text").text(data.responseJSON.message).css("display", "block");
 		}
 	});
+});
+
+$(".delete-player-btn").on("click", function(e) {
+	e.preventDefault();
+	var current_id = $(this).closest("li").data("id");
+	$("#dialog-confirm").dialog({
+      resizable: false,
+      modal: true,
+      width: 400,
+      height: 220,
+      buttons: {
+        "Delete player": function () {
+			delete_team(current_id);
+			$(this).dialog("close");
+        },
+        Cancel: function() {
+          $(this).dialog( "close" );
+        }
+      }
+    });
 });

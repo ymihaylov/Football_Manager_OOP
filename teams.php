@@ -68,7 +68,7 @@
 	<div id="update-info-text"></div>		
 
 <div id="dialog-confirm" style="font-size: 1.6em;" title="Delete this team?">
-  <p>This team will be permanently deleted and cannot be recovered. Are you sure?</p>
+  <p>This team will be permanently deleted and cannot be recovered. Are you sure for deleting?</p>
 </div>
 <?php  
 require_once 'html-snippets/footer.php';
