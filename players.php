@@ -15,13 +15,19 @@
 <?php 
 	$player_obj = new Players;
 	$team_obj = new Teams;
-
-	$all_players = $player_obj->get_all_players();
-
-	if ( ! empty($all_players))
+	if (isset($_GET['team-id']))
+	{
+		$players_array = $player_obj->get_players_by_team_id($_GET['team-id']);
+	}
+	else 
+	{
+		$players_array = $player_obj->get_all_players();	
+	}
+	
+	if ( ! empty($players_array))
 	{	
 		// Get team names by id
-		foreach ($all_players as $key => $player) 
+		foreach ($players_array as $key => $player) 
 		{
 			$ids[] = $player['team_id'];
 		}
@@ -30,7 +36,7 @@
 		$teams_names_array = $team_obj->get_team_names_by_ids($ids);
 	
 		// Print players in html list
-		foreach ($all_players as $key => $player) 
+		foreach ($players_array as $key => $player) 
 		{
 ?>
 	<li data-id="<?= $player['id'] ?>">

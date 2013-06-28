@@ -44,7 +44,7 @@
 			<td class="team-coach-cell editable"><?= $team['team_coach']; ?></td>
 			<td class="team-sponsor-cell editable"><?= $team['team_sponsor']; ?></td>
 			<td class="edit-team-cell"><a class="edit-btn" href="#">Edit</a></td>
-			<td class="view-players-cell"><a href="#">View players</a></td>
+			<td class="view-players-cell"><a href="players.php?team-id=<?= $team["id"] ?>">View players</a></td>
 			<td class="delete-cell"><a href="#"><a href="">Delete</a></td>
 		</tr>
 	<?php

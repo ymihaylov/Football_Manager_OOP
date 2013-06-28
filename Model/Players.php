@@ -11,6 +11,29 @@ class Players extends Generic_Entity {
 		return $all_players;
 	}
 
+	public function get_player_by_id($player_id) 
+	{
+		
+	}
+
+	public function get_players_by_team_id($team_id) 
+	{
+		$query = "SELECT * 
+					FROM `fb_players` 
+					WHERE `team_id` = ".$team_id;
+		if ($result = $this->connection->query($query)) 
+		{
+			while ($row = $result->fetch_assoc()) 
+			{
+				$players_array[] = $row; 
+			}
+			$result->free();
+		}
+
+		if ( ! empty($players_array) )
+			return $players_array;
+	}
+
 	public function delete_player_by_id($id)
 	{		
 		try

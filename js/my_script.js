@@ -42,7 +42,6 @@ $("input#registrer-btn").on("click", function (e) {
 				$("#reg-info-text").text(data.responseJSON.message);
 				if(data.responseJSON.registred) {
 					window.location = "teams.php";
-					
 				}
 			}
 		});
