@@ -13,7 +13,11 @@ class Players extends Generic_Entity {
 
 	public function get_player_by_id($player_id) 
 	{
-		
+		$properties_array = array(
+			"player_firstname", "player_lastname", "player_height",
+			"player_playingposition", "player_birthday", "player_number", "player_avatar_url");
+		$player_data = parent::get_by_id(self::TABLE_NAME, $player_id, $properties_array);
+		return $player_data;
 	}
 
 	public function get_players_by_team_id($team_id) 

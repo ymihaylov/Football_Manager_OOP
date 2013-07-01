@@ -9,6 +9,24 @@ class Generic_Entity extends Database {
 		parent::__construct();
 	}
 
+	protected function get_by_id($table, $entity_id, $prop_array) 
+	{
+		$query = "SELECT ";
+
+		$prop_array_length = sizeof($prop_array);
+
+		for ($i=0; $i < $prop_array_length; $i++) 
+		{ 
+			$query .= "$prop_array[$i], ";
+		}
+		$query = mb_substr($query, 0, -2);
+		$query  .= " FROM `$table` 
+					WHERE id ='$entity_id' LIMIT 1";
+		$result = $this->connection->query($query);
+		$result_array = $result->fetch_assoc();
+		return $result_array;
+	} 
+
 	protected function getAll($table)
 	{
 		$get_all_query = "SELECT * 
@@ -69,7 +87,6 @@ class Generic_Entity extends Database {
 		{
 			return $this->connection->insert_id;
 		}
-		
 	}
 
 }

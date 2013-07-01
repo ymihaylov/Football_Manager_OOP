@@ -53,7 +53,7 @@
 		</div>
 		
 		<div class="player-btns-container">
-			<a class="edit-player-btn" href="#">Edit</a>
+			<a class="edit-player-btn" href="edit-player.php?player-id=<?= $player['id']; ?>">Edit</a>
 			<a class="delete-player-btn" href="#">Delete</a>
 		</div>
 	</li>			
