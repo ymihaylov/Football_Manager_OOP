@@ -48,17 +48,17 @@
 
 			<div class="textinput-container">
 				<label for="">Height:</label>
-				<input type="text" name="player-height" value="<?= $player_data['player_height']; ?>" />
+				<input type="number" value="<?= $player_data['player_height']; ?>" />
 			</div>
 
 
 			<div class="textinput-container">
 				<label for="">Team:</label>
 				<select>
-				  <option value="volvo">Volvo</option>
-				  <option value="saab">Saab</option>
-				  <option value="mercedes">Mercedes</option>
-				  <option value="audi">Audi</option>
+				  <option value="volvo">dasdsa</option>
+				  <option value="saab">dasda</option>
+				  <option value="mercedes">dasdas</option>
+				  <option value="audi">dasdas</option>
 				</select>
 			</div>
 
