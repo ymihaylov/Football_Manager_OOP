@@ -38,10 +38,18 @@
 		// Print players in html list
 		foreach ($players_array as $key => $player) 
 		{
+			if ( ! $player['player_avatar_url']) 
+			{
+				$player_avatar_url = 'imgs/default-avatar.png';
+			}
+			else 
+			{
+				$player_avatar_url = 'uploads/'.$player['player_avatar_url'];	
+			}
 ?>
 	<li data-id="<?= $player['id'] ?>">
 		<div class="photo-name-container">
-			<img src="imgs/default-avatar.png" alt="player-avatar" />
+			<img src="<?= $player_avatar_url ?>" width="128" height="128" alt="player-avatar" />
 			<div class="player-name"><?= $player["player_firstname"] . ' ' . $player["player_lastname"]; ?></div>
 		</div>
 		<div class="player-info-container">

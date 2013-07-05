@@ -1,3 +1,4 @@
+// Login
 $("input#login-btn").on("click", function (e) {
 	e.preventDefault();
 	if($("#username-login").val() === "") {
@@ -25,6 +26,7 @@ $("input#login-btn").on("click", function (e) {
 	});
 });
 
+// Registration
 $("input#registrer-btn").on("click", function (e) {
 	if($("#username-reg").val() === "" || $("#password-reg").val() === "" || $("password-retype-reg").val() === "") {
 		$("#reg-info-text").text("You dont fill all fields");
@@ -51,6 +53,7 @@ $("input#registrer-btn").on("click", function (e) {
 	});
 });
 
+// Clear all inputs in form that passed as parameter
 function clear_form_fields(form)
 {
 	var form_string_text = "#" + form + " :text";
