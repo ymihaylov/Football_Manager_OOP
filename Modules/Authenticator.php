@@ -29,7 +29,7 @@ class Authenticator extends Database {
 				"message" => "You are logged in!");
 			}
 			return array("logged" => false, "username" => $this->username, 
-				"message" => "There is some problem with logging");	
+				"message" => "Username or password dont match");	
 		}
 	}
 

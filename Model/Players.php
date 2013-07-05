@@ -50,6 +50,53 @@ class Players extends Generic_Entity {
 		}
 	}
 
+	private function set_avatar($player_id, $avatar_name) 
+	{
+		parent::updateById(self::TABLE_NAME, $player_id, array("player_avatar_url" => $avatar_name));
+	}
+
+	public function update_player($post, $file)
+	{
+		// Uploading file
+		if ($file['file-to-upload']['error'] > 0) {
+		    die("Error: " . $file['file-to-upload']['error'] . "<br />");
+		} 
+		else 
+		{
+		    // array of valid extensions
+		    $valid_extensions = array('.jpg', '.jpeg', '.gif', '.png');
+			
+			// get extension of the uploaded file
+		    $file_extension = strrchr($file['file-to-upload']['name'], ".");
+
+		    if (in_array($file_extension, $valid_extensions)) 
+		    {
+		     	$newName = $post['player-id'].$file_extension;
+		    	$destination = '../uploads/' . $newName;
+
+		    	if (move_uploaded_file($file['file-to-upload']['tmp_name'], $destination)) 
+		        {
+		           $this->set_avatar($post['player-id'], $newName);
+		        }
+		    } 
+		    else 
+		    {
+		        return false;
+		    }
+		}
+
+		$array_for_update = array(
+			"player_firstname" => $post['player-firstname'],
+			"player_lastname" => $post['player-lastname'],
+			"player_height" => $post['player-height'],
+			"player_number" => $post['player-number'],
+			"player_playingposition" => $post['player-playingposition']
+		);
+
+		parent::updateById(self::TABLE_NAME, $post['player-id'], $array_for_update);
+		return true;
+	}
+
 	public function format_player_birthday($mysql_date)
 	{
 		return date("d F Y", strtotime($mysql_date));
